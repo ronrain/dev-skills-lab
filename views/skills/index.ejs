@@ -10,14 +10,12 @@
   <ul>
     <% skills.forEach(skill => { %>
       <li>
-        <%= skill.text %> 
+      <a href="/skills/<%= skill._id %>"><%= skill.text %> </a>
         - 
         <%= skill.active ? 'active' : ' not active' %> 
-        - 
-        <%= skill.play ? 'I am continuing with this skill' : 
-        'I am not continuing with this skill'  %>
       </li>
     <% }) %>
   </ul>
+  <a href="/skills/new">Add Skill</a>
 </body>
 </html>
