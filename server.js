@@ -5,7 +5,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import createError from 'http-errors'
 import logger from 'morgan'
-import methodOverrride from 'method-override'
+import methodOverride from 'method-override'
 import './config/database.js'
 
 // import routers
@@ -31,7 +31,7 @@ app.use(
     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
   )
 )
-app.use(methodOverrride('_method'))
+app.use(methodOverride('_method'))
 // mount imported routes
 app.use('/', indexRouter)
 app.use('/skills', skillsRouter)

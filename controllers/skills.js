@@ -57,7 +57,7 @@ function show(req,res) {
 }
 
 function deleteSkill(req, res) {
-  Todo.findByIdAndDelete(req.params.skillIdId)
+  Skill.findByIdAndDelete(req.params.skillId)
   .then(skill => {
     res.redirect('/skills')
   })
