@@ -15,6 +15,7 @@ function index(req, res){
   .then(skills => {  // skills represents the result of the query, in this case ALL skills
     res.render('skills/index',{
       skills: skills,
+      time: req.time
     })
   })
   .catch(error => {  // If there's an error, console.log it and redirect back home!
@@ -55,9 +56,21 @@ function show(req,res) {
   })
 }
 
+function deleteSkill(req, res) {
+  Todo.findByIdAndDelete(req.params.skillIdId)
+  .then(skill => {
+    res.redirect('/skills')
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/skills')
+  })
+}
+
 export {
   index,
+  show,
   newSkill as new,
   create,
-  show
+  deleteSkill as delete,
 }
