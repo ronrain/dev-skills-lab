@@ -24,7 +24,7 @@ function index(req, res){
   })
 }
 
-function newSkill(req,res){
+function newSkill(req, res){
   res.render('skills/new')  
 }
 
@@ -43,7 +43,7 @@ function create(req, res) {
 }
 
 
-function show(req,res) {
+function show(req, res) {
   Skill.findById(req.params.skillId)
   .then(skill => {
     res.render('skills/show', {
@@ -67,10 +67,38 @@ function deleteSkill(req, res) {
   })
 }
 
+function edit(req, res){
+  
+  Skill.findById(req.params.skillId)
+  .then(skill => {
+  res.render('skills/edit', {
+    skill: skill
+    })
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/skills')
+  })
+}
+
+function update(req, res){
+  req.body.done = !!req.body.done
+  Skill.findByIdAndUpdate(req.params.skillId, req.body, {new: true})
+  .then(skill => {
+    res.redirect(`/skills/${skill._id}`)
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/skills')
+  })
+}
+
 export {
   index,
   show,
   newSkill as new,
   create,
   deleteSkill as delete,
+  edit,
+  update
 }

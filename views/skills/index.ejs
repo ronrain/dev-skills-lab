@@ -20,7 +20,7 @@
         </form>
       <a href="/skills/<%= skill._id %>"><%= skill.text %> </a>
         - 
-        <%= skill.active ? 'active' : ' not active' %> 
+        <%= skill.done ? 'complete' : ' not complete' %> 
       </li>
     <% }) %>
   </ul>
